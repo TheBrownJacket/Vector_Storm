@@ -81,7 +81,7 @@ void testApp::setup()
     lvlone.xPos=ofGetWindowWidth()/2;
     lvlone.yPos=ofGetWindowHeight();
 
-//Audio
+//Audio (problem with loading ignition.mp3)
 //    ignition.loadSound("audio/ignition.mp3");
 //    ignition.setVolume(0.05);
 //    ignition.setLoop(true);
