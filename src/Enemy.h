@@ -8,9 +8,9 @@
 class Enemy
 {
     public:
-        Enemy();
+        Enemy(int id);
 
-        unsigned int enemy_id;
+        unsigned int enemyID;
 
         float xPos;
         float yPos;

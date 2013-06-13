@@ -1,8 +1,8 @@
 #include "Enemy.h"
 
-Enemy::Enemy()
+Enemy::Enemy(int id)
 {
-    //ctor
+    enemyID=id;
 }
 
 void Enemy::move()

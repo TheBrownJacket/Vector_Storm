@@ -14,6 +14,12 @@ class testApp : public ofBaseApp
     //Logistics
         bool pause;
         bool nightsky;
+        ofImage splash;
+        bool bsplash;
+
+        enum enemyID {
+            BOX_ENEMY = 0,
+        };
 
     //Ships
 		Ship blueship;

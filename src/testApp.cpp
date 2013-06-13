@@ -1,4 +1,5 @@
 #include "testApp.h"
+#include <unistd.h> // for Sleep()
 
 #define FRAMES_PER_SECOND 60 //Do not tamper!!!
 
@@ -15,6 +16,12 @@
 //--------------------------------------------------------------
 void testApp::setup()
 {
+//Splash screen test
+    splash.loadImage("images/splash_screen.png");
+    splash.setAnchorPoint(ofGetWindowWidth()/2,ofGetWindowHeight()/2);
+    splash.resize(ofGetWindowWidth(),ofGetWindowHeight());
+    bsplash=true;
+
 //Basic setup
     ofSetWindowTitle("Vector Storm Beta");
 	ofHideCursor();
@@ -123,6 +130,8 @@ void testApp::update()
 //--------------------------------------------------------------
 void testApp::draw()
 {
+
+
 //Backgrounds
     lvlone.draw();
 
@@ -143,6 +152,13 @@ void testApp::draw()
     for(int i=0;i<sizeof(redship.bullets)/sizeof(redship.bullets[0]);i++)
     {
         redship.bullets[i].draw();
+    }
+    //Splash screen test
+    if (bsplash)
+    {
+        splash.draw(ofGetWindowWidth()/2,ofGetWindowHeight()/2);
+        bsplash=false;
+        sleep(5);
     }
 }
 //--------------------------------------------------------------
@@ -277,5 +293,5 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 void testApp::exit()
 {
-    cout << "Vector Storm (Beta) terminated!\n";
+    cout << "Vector Storm Beta terminated!\n";
 }
