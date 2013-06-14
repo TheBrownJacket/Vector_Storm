@@ -18,9 +18,7 @@ void testApp::setup()
 {
 //Splash screen test
     splash.loadImage("images/splash_screen.png");
-    splash.setAnchorPoint(ofGetWindowWidth()/2,ofGetWindowHeight()/2);
-    splash.resize(ofGetWindowWidth(),ofGetWindowHeight());
-    bsplash=true;
+    splash.resize(100,100*((float)splash.getHeight()/splash.getWidth()));
 
 //Basic setup
     ofSetWindowTitle("Vector Storm Beta");
@@ -130,8 +128,6 @@ void testApp::update()
 //--------------------------------------------------------------
 void testApp::draw()
 {
-
-
 //Backgrounds
     lvlone.draw();
 
@@ -153,13 +149,11 @@ void testApp::draw()
     {
         redship.bullets[i].draw();
     }
-    //Splash screen test
-    if (bsplash)
-    {
-        splash.draw(ofGetWindowWidth()/2,ofGetWindowHeight()/2);
-        bsplash=false;
-        sleep(5);
-    }
+
+	ofEnableAlphaBlending();
+    ofSetColor(255,255,255,255.0/2);
+    splash.draw(ofGetWindowWidth()-splash.getWidth(),ofGetWindowHeight()-splash.getHeight());
+    ofSetColor(255,255,255,255);
 }
 //--------------------------------------------------------------
 void testApp::keyPressed(int key)
