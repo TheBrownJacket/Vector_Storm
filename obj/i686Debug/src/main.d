@@ -251,7 +251,7 @@ obj/i686Debug/src/main.o: src/main.cpp \
  ../../../libs/openFrameworks/video/ofGstVideoPlayer.h \
  ../../../libs/openFrameworks/3d/ofCamera.h \
  ../../../libs/openFrameworks/3d/ofEasyCam.h src/testApp.h src/Ship.h \
- src/Bullet.h src/Star.h src/Background.h \
+ src/Bullet.h src/Star.h src/Enemy.h src/Background.h \
  ../../../libs/openFrameworks/app/ofAppGlutWindow.h \
  ../../../libs/openFrameworks/app/ofAppBaseWindow.h
 
@@ -798,6 +798,8 @@ src/Ship.h:
 src/Bullet.h:
 
 src/Star.h:
+
+src/Enemy.h:
 
 src/Background.h:
 

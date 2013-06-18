@@ -1,17 +1,19 @@
 #include "testApp.h"
 #include <unistd.h> // for Sleep()
-
-#define FRAMES_PER_SECOND 60 //Do not tamper!!!
-
+//Frame rate
+#define FRAMESRATE 60 //Do not tamper!!!
+//Ships
 #define BLUE_SHIP_ACCEL .5
 #define BLUE_SHIP_MAXSPEED 5
 #define BLUE_SHIP_BPS 5
 #define BLUE_SHIP_BULLET_SPEED 15
-
 #define RED_SHIP_ACCEL .25
 #define RED_SHIP_MAXSPEED 10
 #define RED_SHIP_BPS 5
 #define RED_SHIP_BULLET_SPEED 30
+//ENEMIES
+#define SWEEPER_MAXPAN 5
+#define SWEEPER_MINPAN 1
 
 //--------------------------------------------------------------
 void testApp::setup()
@@ -24,7 +26,7 @@ void testApp::setup()
     ofSetWindowTitle("Vector Storm Beta");
 	ofHideCursor();
 	ofBackground(0,0,0);
-    ofSetFrameRate(FRAMES_PER_SECOND);
+    ofSetFrameRate(FRAMESRATE);
 
 //Logistics
     pause=false;
@@ -88,6 +90,17 @@ void testApp::setup()
     lvlone.xPos=ofGetWindowWidth()/2;
     lvlone.yPos=ofGetWindowHeight();
 
+//Enemies
+    for (int i=0;i<sizeof(sweepers)/sizeof(sweepers[0]);i++)
+    {
+        sweepers[i].enemyID=0;
+        sweepers[i].sprite.loadImage("images/enemies/Sweeper.png");
+        sweepers[i].sprite.setAnchorPoint(sweepers[i].sprite.getWidth()/2,sweepers[i].sprite.getHeight()/2);
+        sweepers[i].xPos=ofRandom(sweepers[i].sprite.getWidth(),ofGetWindowWidth()-sweepers[i].sprite.getWidth());
+        sweepers[i].yPos=ofRandom(sweepers[i].sprite.getHeight(),ofGetWindowHeight()/2);
+        sweepers[i].xSpeed=ofRandomf()*SWEEPER_MAXPAN;
+    }
+
 //Audio (problem with loading ignition.mp3)
 //    ignition.loadSound("audio/ignition.mp3");
 //    ignition.setVolume(0.05);
@@ -118,6 +131,11 @@ void testApp::update()
         redship.move();
         redship.boundary();
         redship.shoot();
+    //Enemies
+    for (int i=0;i<sizeof(sweepers)/sizeof(sweepers[0]);i++)
+    {
+        sweepers[i].move();
+    }
 
     //Backgrounds
         lvlone.pan();
@@ -156,7 +174,14 @@ void testApp::draw()
     splash.draw(ofGetWindowWidth()-splash.getWidth(),ofGetWindowHeight()-splash.getHeight());
     ofDrawBitmapString("BETA",ofGetWindowWidth()-40,ofGetWindowHeight()-10);
     ofDisableAlphaBlending();
-    //Pause screen
+
+//Enemies
+    for (int i=0;i<sizeof(sweepers)/sizeof(sweepers[0]);i++)
+    {
+        sweepers[i].draw();
+    }
+
+//Pause screen
     if(pause)
     {
         pausescreen.draw(ofGetWindowWidth()/2,ofGetWindowHeight()/2);

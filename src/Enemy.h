@@ -8,9 +8,23 @@
 class Enemy
 {
     public:
-        Enemy(int id);
+        Enemy();
 
         unsigned int enemyID;
+
+        enum ID{
+            SWEEPER=0,
+            BOMBER,
+            FIGHTER,
+            STRIKER,
+            DOUBLE,
+            DUALWING,
+            DRONE,
+            HUB,
+            DUALBEAM,
+            CRESCENT,
+            FOURWAY,
+        };
 
         float xPos;
         float yPos;
@@ -26,6 +40,7 @@ class Enemy
         int bulletNum;
         int bulletFreq;
 
+        void shoot();
 		void move();
 		void draw();
 

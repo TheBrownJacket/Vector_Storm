@@ -1,13 +1,33 @@
 #include "Enemy.h"
 
-Enemy::Enemy(int id)
+Enemy::Enemy()
 {
-    enemyID=id;
+
+}
+
+void Enemy::shoot()
+{
+
 }
 
 void Enemy::move()
 {
-
+    if(enemyID==SWEEPER)
+    {
+        if (xPos>ofGetWindowWidth()-sprite.getWidth() || xPos<sprite.getWidth())
+        {
+            xSpeed = -xSpeed;
+            if(xPos>ofGetWindowWidth()-sprite.getWidth())
+            {
+                xPos = ofGetWindowWidth()-sprite.getWidth()-1;
+            }
+            else if(xPos<sprite.getWidth())
+            {
+                xPos = sprite.getWidth()+1;
+            }
+        }
+        xPos += xSpeed;
+    }
 }
 
 void Enemy::draw()

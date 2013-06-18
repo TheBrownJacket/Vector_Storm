@@ -4,6 +4,7 @@
 
 #include "Ship.h"
 #include "Star.h"
+#include "Enemy.h"
 #include "Background.h"
 
 #define NUM_OF_STARS 150
@@ -17,17 +18,15 @@ class testApp : public ofBaseApp
         bool nightsky;
         ofImage splash;
 
-    //Enemies
-        enum enemyID {
-            BOX_ENEMY = 0,
-        };
-
     //Ships
 		Ship blueship;
 		Ship redship;
 
     //Stars
         Star stars[NUM_OF_STARS];
+
+    //Enemies
+        Enemy sweepers[3];
 
     //Backgrounds
         Background lvlone;
