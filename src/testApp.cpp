@@ -17,7 +17,7 @@
 void testApp::setup()
 {
 //Splash screen test
-    splash.loadImage("images/splash_screen.png");
+    splash.loadImage("images/logo_transparent.png");
     splash.resize(100,100*((float)splash.getHeight()/splash.getWidth()));
 
 //Basic setup
@@ -151,9 +151,9 @@ void testApp::draw()
     }
 
 	ofEnableAlphaBlending();
-    ofSetColor(255,255,255,255.0/2);
     splash.draw(ofGetWindowWidth()-splash.getWidth(),ofGetWindowHeight()-splash.getHeight());
-    ofSetColor(255,255,255,255);
+    ofDrawBitmapString("BETA",ofGetWindowWidth()-40,ofGetWindowHeight()-10);
+    ofDisableAlphaBlending();
 }
 //--------------------------------------------------------------
 void testApp::keyPressed(int key)

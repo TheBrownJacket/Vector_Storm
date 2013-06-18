@@ -79,22 +79,22 @@ void Ship::boundary()
 {
     if(xPos<=sprite.getWidth()/2)
     {
-        xSpeed=0;
+        xSpeed=-xSpeed/2;
         xPos=sprite.getWidth()/2+1;
     }
     if(xPos>=ofGetWindowWidth()-sprite.getWidth()/2)
     {
-        xSpeed=0;
+        xSpeed=-xSpeed/2;
         xPos=ofGetWindowWidth()-sprite.getWidth()/2-1;
     }
     if(yPos<=sprite.getHeight()/2)
     {
-        ySpeed=0;
+        ySpeed=-ySpeed/2;
         yPos=sprite.getHeight()/2+1;
     }
     if(yPos>=ofGetWindowHeight()-sprite.getHeight()/2)
     {
-        ySpeed=0;
+        ySpeed=-ySpeed/2;
         yPos=ofGetWindowHeight()-sprite.getHeight()/2-1;
     }
 }
