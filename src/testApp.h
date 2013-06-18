@@ -13,10 +13,11 @@ class testApp : public ofBaseApp
 	public:
     //Logistics
         bool pause;
+        ofImage pausescreen;
         bool nightsky;
         ofImage splash;
-        bool bsplash;
 
+    //Enemies
         enum enemyID {
             BOX_ENEMY = 0,
         };

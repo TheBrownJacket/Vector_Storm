@@ -28,6 +28,8 @@ void testApp::setup()
 
 //Logistics
     pause=false;
+    pausescreen.loadImage("images/pause.png");
+    pausescreen.setAnchorPoint(pausescreen.getWidth()/2,pausescreen.getHeight()/2);
     nightsky=false;
 
 //Ships + Bullets
@@ -154,6 +156,11 @@ void testApp::draw()
     splash.draw(ofGetWindowWidth()-splash.getWidth(),ofGetWindowHeight()-splash.getHeight());
     ofDrawBitmapString("BETA",ofGetWindowWidth()-40,ofGetWindowHeight()-10);
     ofDisableAlphaBlending();
+    //Pause screen
+    if(pause)
+    {
+        pausescreen.draw(ofGetWindowWidth()/2,ofGetWindowHeight()/2);
+    }
 }
 //--------------------------------------------------------------
 void testApp::keyPressed(int key)
@@ -232,10 +239,10 @@ void testApp::keyReleased(int key)
             redship.fire = false;
             break;
     //Logistic controls
-        case '0':
+        case 'p':
             pause=!pause;
             break;
-        case '1':
+        case '0':
             if(!pause)
             {
                 nightsky=!nightsky;
